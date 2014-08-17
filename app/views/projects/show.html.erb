@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Project details</h1>
+
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @project.name %>
+  </p>
+
+  <p>
+    <strong>Api key:</strong>
+    <%= @project.api_key %>
+  </p>
+  <div id="usage" class="chart">
+    <svg></svg>
+  </div>
+  <%= link_to 'Back', projects_path, class: 'btn' %>
+</div>
+<script>
+  var chart = line_chart('Daily requests')
+  var data = [{
+    key: 'Daily requests',
+    color: '#75BE23',
+    values: <%== @project.requests.group_by_day(:created_at).count.map{|i, v| {x: i.to_i * 1000, y: v}}.sort_by{|k, v| k[:x]}.to_json %>,
+    area: true
+  }]
+  d3line(data, "#usage svg", chart)
+</script>

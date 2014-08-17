@@ -1,0 +1,5 @@
+<div class="container-fluid" id="requests">
+    <h1><%= @project.name %></h1>
+    <%= render_navigation(context: :project) %>
+    <%= yield :dashboard %>
+</div>

@@ -1,0 +1,12 @@
+request_one:
+  name: "MyString"
+  controller: "MyString"
+  action: "MyString"
+  # method "MyString"
+  format: "MyString"
+  path: "MyString"
+  started: <%= Time.now %>
+  status: 1
+  duration: 150
+  view_runtime: 1.5
+  db_runtime: 1.5

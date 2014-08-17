@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Projects</h1>
+
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>API key</th>
+        <th>Requests today</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= project.name %></td>
+          <td><%= project.api_key %></td>
+          <td><%= project.requests_today %></td>
+          <td>
+            <%= link_to 'Metrics', project_metrics_path(project), class: 'btn btn-small btn-primary' %>
+            <%= link_to 'Settings', edit_project_path(project), class: 'btn btn-small btn-default' %>
+            <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' if current_user == project.owner %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Add Project', new_project_path, class: 'btn btn-primary' %>
+</div>

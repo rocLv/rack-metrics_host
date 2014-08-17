@@ -1,0 +1,305 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the requests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";
+@import "flat-ui";
+.btn-primary{
+  border-color: transparent;
+}
+@mixin border-radius($radius){
+  @include border-top-radius($radius);
+  @include border-right-radius($radius);
+  @include border-bottom-radius($radius);
+  @include border-left-radius($radius);
+}
+.dropdown-arrow-inverse {
+  border-bottom-color: #34495e !important;
+  border-top-color: #34495e !important;
+}
+.checkbox input{
+  display: block ;
+}
+/* styles from flat-ui-free2.0.0-fix.less files */
+html, body {
+  height: 100%;
+}
+a{
+  text-decoration:none;
+}
+#wrap{
+  height: auto !important;
+  margin: 0 auto 0px;
+  min-height: 100%;
+  padding-bottom: 75px;
+  margin-bottom: -65px;
+}
+.append{
+  margin-top: 10px;
+}
+.modal-dialog{
+  width:80%;
+}
+.modal-backdrop, .modal-backdrop.fade.in{
+  background: #000 !important;
+}
+body {
+  color: #34495e;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.231;
+}
+
+header {
+  z-index: 100;
+  width: 100%;
+  padding-bottom: 0;
+  height: 90px;
+}
+.navbar {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navbar .brand {
+  // padding-top: 30px;
+  font-size: 25px;
+  font-weight: normal;
+  color: #34495e;
+  font-weight: 600;
+  line-height: 0.8;
+}
+.navbar .navbar-header{
+  margin-top: 28px;
+}
+.navbar .brand img:first-child {
+  float: left;
+  margin: -10px 15px 0 0;
+}
+.navbar .nav > li {
+  float: left;
+  margin-left: 25px;
+  &:hover{
+    background:none !important;
+  }
+}
+.navbar .nav > li:first-child {
+  margin-left: 0;
+}
+.navbar .nav > li:active a,
+.navbar .nav > li.active a {
+  color: #16a085;
+}
+.navbar .nav > li:active a:hover,
+.navbar .nav > li.active a:hover,
+.navbar .nav > li:active a:focus,
+.navbar .nav > li.active a:focus,
+.navbar .nav > li:active a.active,
+.navbar .nav > li.active a.active {
+  color: #16a085;
+}
+.navbar .nav > li > a {
+  padding: 41px 0 27px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #7f8c8d;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: inherit;
+  &:hover{
+    background:none !important;
+  }
+}
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a.active {
+  color: #16a085;
+}
+
+
+.navbar-collapse.pull-right{
+  .nav{
+    a{
+      line-height: 0;
+    }
+  }
+}
+
+body.login {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+  color: #34495e;
+  .sign_in{
+    width: 400px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    @include border-radius(5px);
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,.05));
+  }
+  .sign_in form{
+    padding: 19px 29px 29px;
+    max-width: 400px;
+  }
+  .sign_in .sign_in-heading, .sign_in .checkbox {
+    margin-bottom: 10px;
+    input{
+    display: block;
+    }
+  }
+  .sign_in input[type="text"],
+  .sign_in input[type="email"],
+  .sign_in input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+  }
+  .footer{
+    padding: 14px 15px 15px;
+    margin-bottom: 0;
+    text-align: right; // right align buttons
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    @include border-radius(0 0 6px 6px);
+    @include box-shadow(inset 0 1px 0 #fff);
+    .btn + .btn {
+      margin-left: 5px;
+      margin-bottom: 0;
+    }
+    .btn-group .btn + .btn {
+      margin-left: -1px;
+    }
+    .btn-block + .btn-block {
+      margin-left: 0;
+    }
+  }
+}
+
+#filter{
+  float: right;
+}
+.box{
+  .header{
+    background:#FAFAFA;
+    border:1px solid #DDDDDD;
+    border-bottom:none;
+    padding:10px;
+    color: #000;
+    font-weight: normal;
+  }
+  .chart{
+    border:1px solid #DDDDDD;
+    border-top:none;
+    background:#fff;
+    h2{
+      margin: 5px;
+    }
+    svg{
+      height: 200px
+    }
+  }
+}
+
+#request-filter{
+  margin: 15px 0;
+}
+.pagination ul li > a, .pagination ul li > span{
+  color: #16A085;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 45%; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
+
+.float-right{
+  float: right;
+}
+
+#slow .nv-bar{
+  cursor: pointer;
+}
+
+.nav.nav-tabs{
+  margin-bottom: -1px;
+}
+#paths, #paths2{
+  svg{
+    height: auto;
+    min-height: 380px;
+  }
+}
+#how{
+  img{
+    margin: 10px 0;
+  }
+  li{
+    font-size: 120%;
+    line-height: 1.8em;
+  }
+}
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+  margin-bottom: 0;
+}
+.tt-hint{
+  width:98%;
+}
+.tt-dropdown-menu {
+  text-align:left;
+  min-width: 260px;
+  margin-top: 2px;
+  padding: 5px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  width:100%;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  color: #fff;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+}
+
+.tt-suggestion.tt-is-under-cursor a {
+  color: #fff;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}

@@ -1,0 +1,4 @@
+alert_one:
+  project: project_one
+  active: true
+  response_time_treshold: 100

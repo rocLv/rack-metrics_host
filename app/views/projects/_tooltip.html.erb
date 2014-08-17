@@ -1,0 +1,5 @@
+<div class="chart-tooltip">
+	<strong><%= "#{request.method} #{request.path}" %></strong><br />
+	<%= "#{request.duration}ms at #{request.started.to_s(:short)}" %><br />
+	<%= link_to 'View details', project_request_path(request.project, request), class: 'btn btn-mini', target: '_blank', data: { toggle: "modal", target: "#ajax-modal"} %>
+</div>

@@ -1,0 +1,87 @@
+<div class="container">
+  <h2>Request - <%= @request.name %></h2>
+  <table>
+    <tr>
+      <td><strong>Started:</strong></td>
+      <td><%= @request.started.to_s(:short) %></td>
+    </tr>
+    <tr>
+      <td><strong>Environment:</strong></td>
+      <td><%= @request.env %></td>
+    </tr>
+    <tr>
+      <td><strong>Path:</strong></td>
+      <td><%= @request.path %></td>
+    </tr>
+    <tr>
+      <td><strong>Memory usage:</strong></td>
+      <td><%= @request.memory %>MB</td>
+    </tr>
+    <tr>
+      <td><strong>Duration:</strong></td>
+      <td> <%= @request.duration %>ms</td>
+    </tr>
+    <tr>
+      <td><strong>View runtime:</strong></td>
+      <td> <%= @request.view_runtime %>ms</td>
+    </tr>
+    <tr>
+      <td><strong>DB runtime:</strong></td>
+      <td> <%= @request.db_runtime %>ms</td>
+    </tr>
+    <tr>
+      <td><strong>Render calls:</strong></td>
+      <td> <%= @request.renders.count %></td>
+    </tr>
+  </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Duration(ms)</th>
+        <th>Queries</th>
+      </tr>
+    </thead>
+  <% @request.renders.order('lft ASC').load.each do |r| %>
+    <tr>
+      <td>
+        <strong><% r.level.times do -%>&nbsp;&nbsp;<% end %><%= r.view %></strong>
+      </td>
+      <td><%= r.duration %></td>
+      <td>
+        <%= link_to r.queries.count, "#queries_#{r.id}", data: {toggle: 'modal'} %>
+        <div id="queries_<%= r.id %>" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header no-border">
+                <strong><%= r.view %> &nbsp;</strong>
+                <a class="close" data-dismiss="modal"  aria-hidden="true">&times;</a>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <td>Name</td>
+                      <td>Query</td>
+                      <td>Duration</td>
+                      <td>Stacktrace</td>
+                    </tr>
+                  </thead>
+                  <% r.queries.each do |q| %>
+                  <tr>
+                    <td><%= q.name %></td>
+                    <td><%= q.query %></td>
+                    <td><%= q.duration %></td>
+                    <td><%= simple_format(q.stack_trace) %></td>
+                  </tr>
+                  <% end %>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>

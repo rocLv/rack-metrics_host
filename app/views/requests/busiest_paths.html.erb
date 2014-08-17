@@ -1,0 +1,32 @@
+<%= content_for :dashboard do %>
+<div class="row-fluid append">
+    <div class="span12 box">
+      <div class="header">95th percentile response time (last 7 days)</div>
+      <div id="paths" class="chart">
+        <svg></svg>
+      </div>
+    </div>
+    <div class="append"></div>
+    <div class="span12 box">
+      <div class="header">Average response time (last 7 days)</div>
+      <div id="paths2" class="chart">
+        <svg></svg>
+      </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+horizontal_bar(<%== @data.to_json %>, '#paths svg')
+horizontal_bar(<%== @data2.to_json %>, '#paths2 svg')
+</script>
+<div id="ajax-modal" class="modal hide fade" tabindex="-1">
+  <div class="modal-header no-border">
+    <strong>Request details</strong>
+    <a class="close" data-dismiss=modal>&times;</a>
+  </div>
+  <div class="modal-body">
+  </div>
+</div>
+<% end %>
+
+<%= render "dashboard_template" %>

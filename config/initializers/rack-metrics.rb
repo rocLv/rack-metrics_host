@@ -1,0 +1,1 @@
+ENV['RACK_METRICS_API_KEY'] = ''

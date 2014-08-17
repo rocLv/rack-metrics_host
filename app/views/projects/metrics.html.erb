@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <h1><%= @project.name %></h1>
+  <%= render_navigation(context: :project) %>
+  <div class="append clearfix"></div>
+  <a href="#" class="btn btn-default btn-lg" onclick="introJs().setOptions({ 'tooltipPosition': 'top' }).start();"><span class="fa fa-question-circle"></span> Help</a>
+
+  <div id="filter" data-intro="You can filter the results by daterange.">
+    <%= form_for @filter, url: project_metrics_path(@project),html: {class: 'form form-inline', method: :get, id: 'filter-form'} do |f| %>
+      <%= f.label "From:"%> <%= f.text_field :from, class: 'datetimepicker' %> <%= f.label "To:"%> <%= f.text_field :to, class: 'datetimepicker' %> <%= f.label "Environment:"%> <%= f.select :env, [["Production", "production"], ["Development", "development"], ["Staging", "staging"]] %>
+      <%= f.button "Submit", class: 'btn btn-xs btn-default' %>
+    <% end %>
+  </div>
+
+  <div class="append">
+    <%= link_to "< 1 hour", project_metrics_path(@project, filter: {from: Time.parse(@filter.from).ago(1.hour).strftime("%Y-%m-%d %H:%M"), to: @filter.from}), class: 'btn btn-sm btn-default' %>
+    <%= link_to("1 hour >", project_metrics_path(@project, filter: {from: @filter.to, to: Time.parse(@filter.to).advance(hours: 1).strftime("%Y-%m-%d %H:%M")}), class: 'btn btn-sm btn-default float-right') if @filter.to_time < Time.current %>
+  </div>
+
+  <div class="row append">
+    <div class="col-md-12 box" data-intro="You can view the average response time here. The graph periodically updates itself if you are not filtering for a date range.">
+      <div class="header"><strong>Average</strong> response time(ms)</div>
+      <div id="response_time" class="chart">
+        <svg></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="row append">
+    <div class="col-md-12 box" data-intro="You can view the average response time here. The graph periodically updates itself if you are not filtering for a date range.">
+      <div class="header"><strong>95th percentile</strong> response time(ms)</div>
+      <div id="response_time_2" class="chart">
+        <svg></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="row append" data-intro="This is a similar list to the above one but for the average throughput.">
+    <div class="col-md-12 box">
+      <div class="header"><strong>Average</strong> throughput</div>
+      <div id="rpm" class="chart">
+        <svg></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="row append" data-intro="The average memory used by the requests. We only collect this data when a request been made hence the zero values.">
+    <div class="col-md-12 box">
+        <div class="header"><strong>Average</strong> memory usage(MB)</div>
+        <div id="memory" class="chart">
+          <svg></svg>
+        </div>
+    </div>
+  </div>
+
+  <div id="requests">
+    <div class="row append">
+        <div class="col-md-6 box" data-intro="The top 10 slowest request. You can click on the bar to view the details.">
+          <div class="header">Slowest response time (last 7 days)</div>
+          <div id="slow" class="chart">
+            <svg></svg>
+          </div>
+        </div>
+        <div class="col-md-6 box" data-intro="Top 10 busiest URLs in your app.">
+          <div class="header">Highest throughput (last 7 days)</div>
+          <div id="highest_throughput" class="chart">
+            <svg></svg>
+          </div>
+        </div>
+    </div>
+    <div class="clearfix append"></div>
+    <%= link_to 'All requests', project_requests_path(@project), class: 'btn btn-default' %>
+  </div>
+</div>
+<script type="text/javascript">
+  d3_charts();
+  $.get('<%= dashboard_project_requests_path(@project.id, format: :json) %>', function(data){
+    horizontal_bar(data['slowest'], '#slow svg')
+    horizontal_bar(data['highest_throughput'], '#highest_throughput svg')
+  })
+  $(".datetimepicker").datetimepicker({
+    dateFormat: 'yy-mm-dd', timeFormat: 'HH:mm', maxDate: '+0m', maxDateTime: new Date(),
+    beforeShow: function (textbox, instance) {
+      instance.dpDiv.css({
+        marginTop: '60px',
+      });
+    }
+  });
+</script>
+<div id="ajax-modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header no-border">
+        <strong>Request details</strong>
+        <a class="close" data-dismiss=modal>&times;</a>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>

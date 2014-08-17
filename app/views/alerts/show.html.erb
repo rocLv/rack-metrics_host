@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @alert.project %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @alert.active %>
+</p>
+
+<p>
+  <strong>Response time treshold:</strong>
+  <%= @alert.response_time_treshold %>
+</p>
+
+<%= link_to 'Edit', edit_alert_path(@alert) %> |
+<%= link_to 'Back', alerts_path %>

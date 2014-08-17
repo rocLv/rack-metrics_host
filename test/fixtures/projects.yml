@@ -1,0 +1,6 @@
+project_one:
+  name: 'Test project'
+
+test_project:
+  name: 'Foo'
+  owner: user_one

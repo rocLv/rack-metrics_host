@@ -1,0 +1,2 @@
+<%= @invitation.project.owner.name %> has invited you to rack-metrics.com. <br />
+Click on this link to accept the invitation: <a href="<%= invitation_url(invitation: {token: @invitation.token}) %>">rack-metrics.com</a>
