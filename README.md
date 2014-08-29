@@ -1,3 +1,9 @@
+# Rack Metrics
+
+Open source, self hosted application performance monitoring.
+
+![screenshot](https://raw.github.com/rack-metrics/rack-metrics_host/master/shot2.jpg)
+
 # Setup guide
 
 * Generate a secret token for devise
