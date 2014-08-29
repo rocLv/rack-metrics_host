@@ -54,7 +54,7 @@ gem 'compass-rails'
 gem 'devise'
 gem 'cancan'
 gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set'
-
+gem 'dotenv-rails'
 gem 'webmock', group: :test
 gem 'pry-rails'
 gem "chartkick"
