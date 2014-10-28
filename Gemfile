@@ -53,7 +53,7 @@ gem "font-awesome-rails"
 gem 'compass-rails'
 gem 'devise'
 gem 'cancan'
-gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set'
+gem 'awesome_nested_set', git: 'https://github.com/collectiveidea/awesome_nested_set'
 gem 'dotenv-rails'
 gem 'webmock', group: :test
 gem 'pry-rails'
@@ -71,10 +71,12 @@ gem "flat-ui-rails"
 gem 'puma'
 gem 'whenever'
 group :development do
-  gem 'capistrano-rbenv', '~> 1.x'
   gem 'quiet_assets'
-  gem 'capistrano-maintenance'
-  gem 'capistrano', '~> 2.x'
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano3-puma'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -82,5 +84,5 @@ group :development do
 end
 gem 'sidekiq', '~> 2.x'
 gem 'sinatra', '>= 1.3.0', :require => nil
-gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4.1"
+gem "ransack", git: "https://github.com/activerecord-hackery/ransack", branch: "rails-4.1"
 gem "airbrake"

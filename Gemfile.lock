@@ -1,20 +1,20 @@
 GIT
-  remote: git://github.com/activerecord-hackery/ransack.git
-  revision: d5cc866745fd4a577fb9c7e676262f8a3f8d41cd
+  remote: https://github.com/activerecord-hackery/ransack
+  revision: 742425ade4bb66db573dc13bf436a8f3c87b733b
   branch: rails-4.1
   specs:
-    ransack (1.2.2)
+    ransack (1.2.4)
       actionpack (>= 4.0)
       activerecord (>= 4.0)
       activesupport (>= 4.0)
       i18n
-      polyamorous (~> 1.0.0)
+      polyamorous (~> 1.1)
 
 GIT
-  remote: git://github.com/collectiveidea/awesome_nested_set.git
-  revision: 0eec587e456d2e6cd6cf528000bf0be5e2223594
+  remote: https://github.com/collectiveidea/awesome_nested_set
+  revision: f97296450fd07013904b4ebcc41dbee6f3beda73
   specs:
-    awesome_nested_set (3.0.0.rc.4)
+    awesome_nested_set (3.0.1)
       activerecord (>= 4.0.0, < 5)
 
 GEM
@@ -62,19 +62,22 @@ GEM
     builder (3.2.2)
     callsite (0.0.11)
     cancan (1.6.10)
-    capistrano (2.15.5)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
-    capistrano-maintenance (0.0.4)
-      capistrano (>= 2.0.0)
-    capistrano-platform-resources (0.1.3)
-      capistrano (< 3)
-    capistrano-rbenv (1.0.5)
-      capistrano (< 3)
-      capistrano-platform-resources (>= 0.1.3)
+    capistrano (3.2.1)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.3)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.1.1)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.0.2)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    capistrano3-puma (0.7.0)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     chartkick (1.2.4)
@@ -88,6 +91,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colorize (0.7.3)
     compass (0.12.6)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -121,7 +125,6 @@ GEM
       json
     groupdate (2.1.0)
       activerecord (>= 3.0.0)
-    highline (1.6.21)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -154,14 +157,10 @@ GEM
     multi_json (1.10.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-sftp (2.1.2)
-      net-ssh (>= 2.6.5)
-    net-ssh (2.9.0)
-    net-ssh-gateway (1.2.0)
-      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
     orm_adapter (0.5.0)
     pg (0.17.1)
-    polyamorous (1.0.0)
+    polyamorous (1.1.0)
       activerecord (>= 3.0)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -238,6 +237,10 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sshkit (1.5.1)
+      colorize
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -274,9 +277,11 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3)
   cancan
-  capistrano (~> 2.x)
-  capistrano-maintenance
-  capistrano-rbenv (~> 1.x)
+  capistrano (~> 3.1)
+  capistrano-bundler (~> 1.1.2)
+  capistrano-rails (~> 1.1)
+  capistrano-rbenv (~> 2.0)
+  capistrano3-puma
   chartkick
   coffee-rails (~> 4.0.0)
   compass-rails
