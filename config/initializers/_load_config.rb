@@ -13,4 +13,5 @@ if smtp = Rails.application.config.smtp_settings
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = smtp
   ActionMailer::Base.default_options = {from: Rails.application.config.email_from}
+  ActionMailer::Base.default_url_options = {host: Rails.application.config.host}
 end
