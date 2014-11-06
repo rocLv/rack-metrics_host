@@ -7,6 +7,6 @@ class RequestTest < ActiveSupport::TestCase
     request = project.requests.create!(project_id: project.id, duration: 200)
     skip "Fix it later"
     notification = ActionMailer::Base.deliveries.last
-    assert_equal "Alert from rack-metrics.com", notification.subject
+    assert_equal "Alert from yourhost.com", notification.subject
   end
 end

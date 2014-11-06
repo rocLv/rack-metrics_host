@@ -1,2 +1,2 @@
-<%= @invitation.project.owner.name %> has invited you to <%= Rails.application.host %>. <br />
-Click on this link to accept the invitation: <a href="<%= invitation_url(invitation: {token: @invitation.token}) %>">rack-metrics.com</a>
+<%= @invitation.project.owner.name %> has invited you to <%= Rails.application.config.host %>. <br />
+Click on this link to accept the invitation: <a href="<%= invitation_url(invitation: {token: @invitation.token}) %>"><%= Rails.application.config.host %></a>
