@@ -1,0 +1,10 @@
+smtp_settings:
+ :address:              ADDRESS
+ :domain:               DOMAIN
+ :port:                 "25"
+ :authentication:       :plain, :login, :cram_md5
+ :enable_starttls_auto: true
+ :user_name:            USERNAME
+ :password:             PASSWORD
+email_from: 'no-reply@yourhost.com'
+host: 'yourhost.com'
